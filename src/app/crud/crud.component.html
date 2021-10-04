@@ -1,0 +1,61 @@
+<h1><i>Crud operation</i></h1>
+
+<div class="container">
+    <h3><i>Create:</i></h3>
+    <!-- {{postform.value|json}} -->
+    {{crud2|json}}
+    <form #postform="ngForm">
+        <div class="form-group">
+            name:<input type="text" #name1="ngModel" placeholder="enter name" class="form-control" name="name"
+                [(ngModel)]="uname1">
+        </div>
+
+        <div class="form-group">
+            email:<input type="text" #name2="ngModel" placeholder="enter email" class="form-control" name="email"
+                [(ngModel)]="emailone">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" (click)="PostHttpData2(postform.value)">Postdata</button>
+            <button type="reset" class="btn btn-warning">reset</button>
+        </div>
+    </form>
+    <hr>
+    <h3><i>Update:</i></h3>
+    {{crud3|json}}
+    <form #updateform="ngForm">
+        <div class="form-group">
+            update name:<input type="text" #name1="ngModel" placeholder="enter updated name" class="form-control"
+                name="name" [(ngModel)]="uname2">
+        </div>
+        <div class="form-group">
+            update email:<input type="text" #name2="ngModel" placeholder="enter updated email" class="form-control"
+                name="email" [(ngModel)]="emailtwo">
+        </div>
+        <button type="submit" class="btn btn-secondary" (click)="PutHttpData2(updateform.value)">Putdata</button>
+        <button type="reset" class="btn btn-warning">reset</button>
+    </form>
+    <hr>
+    <h3><i>Read operation:</i></h3>
+    <!-- {{crud|json}} -->
+    <button type="submit" class="btn btn-primary" (click)="GetHttpData2()">GetData</button>
+    <table border="1">
+        <tr>
+            <th>id</th>
+            <th>email</th>
+            <th>first_name</th>
+            <th>last_name</th>
+            <th>avatar</th>
+        </tr>
+        <tr *ngFor='let c of crud.data'>
+            <td>{{c.id}}</td>
+            <td>{{c.email}}</td>
+            <td>{{c.first_name}}</td>
+            <td>{{c.last_name}}</td>
+            <td><img src="{{c.avatar}}" width="30" height="30"></td>
+        </tr>
+    </table>
+    <hr>
+    <h3><i>Delete:</i></h3>
+    <button type="submit" class="btn btn-danger" (click)="DeleteHttpData2()">Deletedata</button>
+    {{crud4|json}}
+</div>
